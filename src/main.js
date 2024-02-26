@@ -53,7 +53,6 @@ function checkForSending(event) {
       }
     })
     .then(data => {
-      //   loader.style.display = 'block';
       renderGallery(data);
       lightbox.refresh();
     })

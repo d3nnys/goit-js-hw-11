@@ -1,5 +1,3 @@
-// const LINK = `${refs.URL}?key=${refs.API_KEY}&q=${refs.KEYWORD}&image_type=${refs.IMAGE_TYPE}&safesearch=${refs.SAFESEARCH}&orientation=${refs.ORIENTATION}`;
-
 export function fetchImgs(query) {
   const refs = {
     KEYWORD: 'nature',
