@@ -4,5 +4,6 @@
   | default @import url()
   |============================
 */
+@import 'normalize.css';
 @import url('./reset.css');
 @import url('./form-styles.css');
