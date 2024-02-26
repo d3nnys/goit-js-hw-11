@@ -24,30 +24,37 @@ function checkForSending(event) {
   event.preventDefault();
 
   const searchQuery = form.elements.query.value.trim();
-  if (searchQuery === '') return;
 
-  const clearGallery = () => {
-    if (!gallery) return;
+  if (searchQuery === '') {
+    iziToast.warning({
+      message: 'Please enter a search query.',
+      messageColor: 'black',
+      backgroundColor: '#ffac26',
+      position: 'topRight',
+      pauseOnHover: false,
+      progressBarColor: 'black',
+      timeout: 3000,
+    });
 
-    gallery.innerHTML = '';
-  };
+    return;
+  }
 
   loader.style.display = 'block';
 
   fetchImgs(searchQuery)
     .then(data => {
       if (data.hits.length === 0) {
-        iziToast.error({
-          theme: 'dark',
-          message:
-            'Sorry, there are no images matching your search query. Please try again!',
-          messageColor: '#ffffff',
-          backgroundColor: '#ef4040',
-          position: 'topRight',
-          iconUrl: Error,
-          progressBarColor: '#b51b1b',
-          timeout: 3000,
-        });
+        // iziToast.error({
+        //   theme: 'dark',
+        //   message:
+        //     'Sorry, there are no images matching your search query. Please try again!',
+        //   messageColor: '#ffffff',
+        //   backgroundColor: '#ef4040',
+        //   position: 'topRight',
+        //   iconUrl: Error,
+        //   progressBarColor: '#b51b1b',
+        //   timeout: 3000,
+        // });
       } else {
         return data;
       }
@@ -56,19 +63,22 @@ function checkForSending(event) {
       renderGallery(data);
       lightbox.refresh();
     })
-    .catch(error => console.log(error.status))
+    .catch(error =>
+      iziToast.error({
+        theme: 'dark',
+        message:
+          'Sorry, there are no images matching your search query. Please try again!',
+        messageColor: '#ffffff',
+        backgroundColor: '#ef4040',
+        position: 'topRight',
+        iconUrl: Error,
+        pauseOnHover: false,
+        progressBarColor: '#b51b1b',
+        timeout: 3000,
+      })
+    )
     .finally(() => {
       loader.style.display = 'none';
       form.reset();
     });
 }
-
-//   loader.style.display = 'block';
-
-//   const toggleLoader = state => {
-//     if (!loader) return;
-
-//     state
-//       ? loader.classList.add('is-active')
-//       : loader.classList.remove('is-active');
-//   };
