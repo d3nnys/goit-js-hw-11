@@ -113,7 +113,6 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* gap: 0 15px; */
   padding: 10px;
 }
 
@@ -124,7 +123,7 @@
 }
 
 .item-card-wrapper {
-  border: 1.5px solid grey;
+  border: 1px solid grey;
   border-radius: 4px;
 }
 
@@ -173,7 +172,6 @@
   letter-spacing: 0.04em;
   color: #2e2f42;
   text-transform: uppercase;
-  /* margin: 0 0 10px 0; */
 }
 
 header > .container {
