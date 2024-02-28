@@ -43,7 +43,7 @@ function checkForSending(event) {
 
   fetchImgs(searchQuery)
     .then(data => {
-      if (data.hits.length === 0) {
+      if (data && data.hits && data.hits.length > 0) {
         return data;
       }
     })
